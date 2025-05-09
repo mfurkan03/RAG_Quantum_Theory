@@ -95,7 +95,7 @@ def main():
     chroma_client = chromadb.PersistentClient(path=args.database_path)
 
     collection = chroma_client.get_collection(name=args.database_name)
-    if len(collection.get(limit=1))>= 1:
+    if len(collection.get(limit=1)["documents"])> 0:
 
         print(f"Database initialized successfully!")
         return generator,tokenizer,collection
