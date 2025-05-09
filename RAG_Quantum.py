@@ -1,21 +1,15 @@
-import pdfplumber
-import os
-from langchain.text_splitter import TokenTextSplitter
-from langchain.schema.document import Document
-from tqdm import tqdm
+
 from sentence_transformers import SentenceTransformer
-import sys
-import contextlib
 import chromadb
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
 import argparse
-import requests
 import streamlit as st
 from fastapi import FastAPI, Body, Request
 import torch
 import threading
 import uvicorn
 import time
+import sys 
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -174,3 +168,7 @@ def main():
     except KeyboardInterrupt:
         print("Shutting down...")
         streamlit_process.terminate()
+
+if __name__ == "__main__":
+
+    main()
