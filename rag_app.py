@@ -27,7 +27,7 @@ if st.button("Send!") and user_query.strip() != "":
                 # Display sources
                 st.markdown("### Sources")
                 for i,j in enumerate(result["sources"]):
-                    st.write(f"**Kaynak {i+1}:** {i['source']}, Sayfa: {i['page']}")
+                    st.write(f"**Kaynak {i+1}:** {j['source']}, Sayfa: {j['page']}")
             else:
                 st.error(f"ERROR: {response.status_code} - {response.text}")
         except Exception as e:
