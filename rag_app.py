@@ -26,8 +26,8 @@ if st.button("Gönder") and user_query.strip() != "":
                 
                 # Display sources
                 st.markdown("### Kaynaklar")
-                for i, source in enumerate(result["sources"]):
-                    st.write(f"**Kaynak {i+1}:** {source['source']}, Bölüm: {source['chunk']}")
+                for i, in result["sources"]:
+                    st.write(f"**Kaynak {i+1}:** {i['source']}, Sayfa: {i['page']}")
             else:
                 st.error(f"Hata: {response.status_code} - {response.text}")
         except Exception as e:
