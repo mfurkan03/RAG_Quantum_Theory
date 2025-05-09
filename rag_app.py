@@ -3,14 +3,14 @@ import requests
 import json
 
 st.set_page_config(page_title="Document QA with RAG", page_icon="🧠")
-st.title("📚 RAG-Based Document Assistant")
-st.write("Sorgunuzu aşağıya yazın, sistem belgelerden size bilgi getirsin.")
+st.title("⚛️ RAG-Based Document Assistant")
+st.write("Enter your question below, the system will bring information form the database!")
 
 # User input
-user_query = st.text_input("Sorgunuz", placeholder="Örnek: 'Kuantum mekaniğinin temel ilkeleri nedir?'")
+user_query = st.text_input("Question", placeholder="Example: 'What is quantum theory?'")
 
-if st.button("Gönder") and user_query.strip() != "":
-    with st.spinner("Yanıt getiriliyor..."):
+if st.button("Send!") and user_query.strip() != "":
+    with st.spinner("Generating the answer..."):
         try:
             response = requests.post(
                 "http://localhost:8000/query",
@@ -21,14 +21,14 @@ if st.button("Gönder") and user_query.strip() != "":
                 result = response.json()
                 
                 # Display the response
-                st.markdown("### Yanıt")
+                st.markdown("### Answer")
                 st.write(result["response"])
                 
                 # Display sources
-                st.markdown("### Kaynaklar")
+                st.markdown("### Sources")
                 for i, in result["sources"]:
                     st.write(f"**Kaynak {i+1}:** {i['source']}, Sayfa: {i['page']}")
             else:
-                st.error(f"Hata: {response.status_code} - {response.text}")
+                st.error(f"ERROR: {response.status_code} - {response.text}")
         except Exception as e:
-            st.error(f"Backend ile iletişim hatası: {e}")
+            st.error(f"Error while communicating with backend: {e}")
