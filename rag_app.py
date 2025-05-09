@@ -26,7 +26,7 @@ if st.button("Send!") and user_query.strip() != "":
                 
                 # Display sources
                 st.markdown("### Sources")
-                for i, in result["sources"]:
+                for i in result["sources"]:
                     st.write(f"**Kaynak {i+1}:** {i['source']}, Sayfa: {i['page']}")
             else:
                 st.error(f"ERROR: {response.status_code} - {response.text}")
