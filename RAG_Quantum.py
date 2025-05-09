@@ -157,7 +157,7 @@ def main():
         try:
             from google.colab import output
             print("Opening Streamlit in a new window using Colab's tunnel...")
-            output.serve_kernel_port_as_window(8501)
+            output.serve_kernel_port_as_iframe(8501)
         except ImportError:
             print("Not running in Google Colab or missing output module. Tunnel not created.")
     
